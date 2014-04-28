@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:form="http://www.springframework.org/tags/form">
+
+<h:head></h:head>
+<body>
+
+	<div>
+  <h:form id="member" >	
+		<p:panel header="User List">
+			${title}
+			<h:outputText id="title" value="#{title}"/>
+				<p:panelGrid columns="2" style="border:0px">
+						Ad : <h:inputText id="firstName" value="#{firstName}" required="true"/> <h:message for="firstName"/>
+						Soyad : <h:inputText id="lastName" value="#{lastName}" required="true" /><h:message for="lastName"/>
+						Telefon : <h:inputText id="phone" value="#{phone}" required="true" /><h:message for="phone"/>
+						<p:messages /> 
+					<h:commandButton id="kaydet" value="Kaydet" styleClass="more" update="@form :lists"/>	
+				</p:panelGrid>
+				</p:panel>
+			</h:form>
+	</div>
+	
+	
+	<h:form id="lists">
+	<p:dataTable id="userListTable" value="#{allMembers.members}" var="mem">
+
+	
+	
+		<p:column>
+		<f:facet name="header">Ad</f:facet>
+		<h:outputText id="ad" value="#{mem.firstName}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header">soyad</f:facet>
+		<h:outputText id="soyad" value="#{mem.lastName}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header">Telefon</f:facet>
+		<h:outputText id="telefon" value="#{mem.phone}" />
+		</p:column>
+	
+	</p:dataTable>
+	
+	
+	</h:form>
+
+
+
+</body>
+</html>
